@@ -1,0 +1,24 @@
+<div id="wrapper" style="text-align:center">
+<div style="text-align:center">
+  <h1>
+    Welcome to {{ title }}. 
+  </h1>
+  <h5>Create your bucketlists here and share with your friends.</h5>
+</div>
+  <h3>Login / Register for Bucket List access</h3>
+  <div id="registerform">
+    <form (submit)="register()" #registerForm='ngForm'>
+      <h1>Register / Login</h1>
+      <h5><i>if your email already exists, you will be logged in.</i></h5>
+      <label for="name">Name:</label>
+        <input type="text" name="name" required maxlength='50' placeholder='max 50 chars' [(ngModel)]="user.name" #name='ngModel'><br><br>
+          <span class="formerrors" *ngIf='!name.valid && name.dirty'>
+          <i>Name is required.</i></span>
+      <label for="email">Email Address:</label>
+        <input type="text" name="email" required placeholder="valid email required" pattern='([a-zA-Z0-9\-\_\"]+)([\_\.\-\+{1}])?([a-zA-Z0-9\-\"\_]+)\@([a-zA-Z0-9\[]+)([\-])?([a-zA-Z0-9]+)?([\.])([a-zA-Z0-9\.\]]+)$' [(ngModel)]="user.email" #email='ngModel'><br><br>
+          <span class="formerrors" *ngIf='!email.valid && email.dirty'>
+          <i>Email is required and must be correct format</i></span>
+      <input [disabled]='!registerForm.valid' type="submit" Value="Register and Login"><br><br>
+    </form><br><br>
+  </div>
+</div>

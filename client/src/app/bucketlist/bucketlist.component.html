@@ -1,0 +1,21 @@
+<div>
+   <a [routerLink]="['/BucketList']">Bucket List</a> |  <a [routerLink]="['/logout']">Logout</a>
+  <hr>
+</div>
+<div id="wrapper">
+  <div>
+    <h3 *ngIf="current_user"> Welcome, {{current_user.name}}. </h3>
+  </div>
+</div>
+<div> 
+  <form (submit)="createbucket()" #createblitem='ngForm'>
+    <input type="text" name="title" placeholder="Title" [(ngModel)]="bucket.title" #title="ngModel">
+    <input type="text" name="description" placeholder="Description" [(ngModel)]="bucket.description" #description="ngModel">
+    <select name="taggedUser" [(ngModel)]="bucket.taggedUser" #taggedUser="ngModel"> 
+      <option *ngFor="let user of all_users" value="{{user._id}}">{{user.name}}</option>
+    </select>
+    <input type="submit" name="submit" value="Add to List">
+  </form>
+</div>
+<app-bucketlistdetail></app-bucketlistdetail>
+<app-bucketlistusers></app-bucketlistusers>
